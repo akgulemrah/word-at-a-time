@@ -1,5 +1,6 @@
 #include "word_at_a_time.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main (void)
 {
@@ -10,9 +11,14 @@ int main (void)
 		"reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
 		"pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa "
 		"qui officia deserunt mollit anim id est laborum.;
-	int res = 0;
 	char buf[50];
 
-	res = word_at_a_time(str, buf);
+	if (!word_at_a_time(str, buf))
+		printf("%s | ", buf);
+	else
+		return EXIT_FAILURE;
 	
+	while (!word_at_a_time(0, buf))
+		printf("%s | ", buf);
+	return EXIT_SUCCESS;
 }
