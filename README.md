@@ -62,6 +62,6 @@ int main (void)
 }
 ```
 ## License
-Unlicense
+[unlicense](https://unlicense.org/)
 
 This header file is provided "as is" and is intended for personal use only. There is no warranty for this code, and it is not licensed for commercial purposes. Use this utility at your own risk. The author accepts no responsibility for any issues or damages that may arise from using this code.
