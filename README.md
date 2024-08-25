@@ -1,6 +1,7 @@
 # word_at_a_time
 
-`word_at_a_time` is a C utility designed to extract words from a string, one at a time. This header file defines a function to parse words from a source string and store them into a buffer. The function is particularly useful for processing text in a memory-efficient way, where the source string can be progressively parsed word by word.
+`word_at_a_time is a simple C utility that helps you pull words from a string, one at a time. This header file includes a straightforward function that lets you extract words from a source string and put them into a buffer. It’s perfect for when you need to handle text efficiently, processing it word by word as you go.
+
 
 ## Features
 
@@ -34,34 +35,33 @@ This function extracts the next word from the `src` string and copies it to `buf
 ## Example Usage
 
 ```c
-#include <stdio.h>
-#include <string.h>
 #include "word_at_a_time.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-    char src[] = "Hello world from ChatGPT";
-    char buf[50];
+int main (void)
+{
+	char *str = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, "
+		"sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+		"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "
+		"nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in "
+		"reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+		"pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa "
+		"qui officia deserunt mollit anim id est laborum.";
+	char buf[50];
 
-    // Initialize the source
-    word_at_a_time(src, buf);
-    printf("First word: %s\n", buf); // Output: Hello
-
-    // Continue to extract the next word
-    word_at_a_time(NULL, buf);
-    printf("Second word: %s\n", buf); // Output: world
-
-    // Continue to extract the next word
-    word_at_a_time(NULL, buf);
-    printf("Third word: %s\n", buf); // Output: from
-
-    // Continue to extract the next word
-    word_at_a_time(NULL, buf);
-    printf("Fourth word: %s\n", buf); // Output: ChatGPT
-
-    // Attempt to extract further will return -1
-    if (word_at_a_time(NULL, buf) == -1) {
-        printf("No more words\n"); // Output: No more words
-    }
-
-    return 0;
+	// 
+	if (!word_at_a_time(str, buf))
+		printf("%s | ", buf);
+	else
+		return EXIT_FAILURE;
+	
+	while (!word_at_a_time(0, buf))
+		printf("%s | ", buf);
+	return EXIT_SUCCESS;
 }
+
+##License
+Unlicense
+
+This header file is provided "as is" and is intended for personal use only. There is no warranty for this code, and it is not licensed for commercial purposes. Use this utility at your own risk. The author accepts no responsibility for any issues or damages that may arise from using this code.
