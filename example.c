@@ -13,6 +13,7 @@ int main (void)
 		"qui officia deserunt mollit anim id est laborum.";
 	char buf[50];
 
+	// 
 	if (!word_at_a_time(str, buf))
 		printf("%s | ", buf);
 	else
