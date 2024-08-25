@@ -6,7 +6,7 @@
 int word_at_a_time(char *src, char *buf)
 {
         static char *src_ptr = NULL;
-        char *buf_ptr = buf;
+
         if (src != NULL)
                 src_ptr = src;
         
@@ -19,12 +19,12 @@ int word_at_a_time(char *src, char *buf)
                 src_ptr++;
 
         if (*src_ptr == '\0')
-                return -1; 
+                return -1;
 
         while (*src_ptr != ' ' && *src_ptr != '\0')
-                *buf_ptr++ = *src_ptr++;
+                *buf++ = *src_ptr++;
 
-        *buf_ptr = '\0';
+        *buf = '\0';
         return 0;
 }
 

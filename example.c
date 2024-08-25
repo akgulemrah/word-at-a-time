@@ -13,7 +13,6 @@ int main (void)
 		"qui officia deserunt mollit anim id est laborum.";
 	char buf[50];
 
-	// 
 	if (!word_at_a_time(str, buf))
 		printf("%s | ", buf);
 	else
@@ -21,5 +20,7 @@ int main (void)
 	
 	while (!word_at_a_time(0, buf))
 		printf("%s | ", buf);
+	puts("");
+	
 	return EXIT_SUCCESS;
 }
