@@ -2,10 +2,11 @@
 #define WORD_AT_A_TIME_H 1
 
 #include <stddef.h>
+#include <ctype.h>
 
-int word_at_a_time(char *src, char *buf)
+int word_at_a_time(const char *src, char *buf)
 {
-        static char *src_ptr = NULL;
+        static const char *src_ptr = NULL;
 
         if (src != NULL)
                 src_ptr = src;
@@ -15,13 +16,13 @@ int word_at_a_time(char *src, char *buf)
         else if (*src_ptr == '\0')
                 return -1; 
 
-        while (*src_ptr == ' ' && *src_ptr != '\0')
+        while (isspace(*src_ptr))
                 src_ptr++;
 
         if (*src_ptr == '\0')
                 return -1;
 
-        while (*src_ptr != ' ' && *src_ptr != '\0')
+        while (!isspace(*src_ptr) && *src_ptr != '\0')
                 *buf++ = *src_ptr++;
 
         *buf = '\0';
